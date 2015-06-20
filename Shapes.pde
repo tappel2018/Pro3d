@@ -1,31 +1,18 @@
 public class Rect{
-  Position center;
-  float width;
-  float height;
-  public Rect(Position center, float width, float height) {
-    this.center = center;
-    this.width = width;
-    this.height = height;
+  ArrayList<Position> pos;
+  public Rect(ArrayList<Position> positions) {
+    this.pos = positions;
   }
   
-  public void render()
-  {
-    //TODO: finish rendering
-    Position c1 = new Position(center);
-    c1.translate(width/2, height/2, 0);
-    
-    Position c2 = new Position(center);
-    c1.translate(width/2, -height/2, 0);
-    
-    Position c3 = new Position(center);
-    c1.translate(-width/2, -height/2, 0);
-    
-    Position c4 = new Position(center);
-    c1.translate(-width/2, height/2, 0);
-    
-    quad(-width/pow(playerP.distance(c1), 2.0), -height/pow(playerP.distance(c1), 2.0), 
-         width/pow(playerP.distance(c2), 2.0), -height/pow(playerP.distance(c2), 2.0),
-         width/pow(playerP.distance(c3), 2.0), height/pow(playerP.distance(c3), 2.0),
-         -width/pow(playerP.distance(c4), 2.0), height/pow(playerP.distance(c4), 2.0));
+  public void render() {
+    beginShape();
+    for ( int i = 0; i < pos.size(); i++ ) {
+      Position current = pos.get(i);
+      Vector toPoint = (new Vector(playerP, current)).getNorm();
+      Vector vx = new Vector(new Position(0, 0, 0), new Position(toPoint.end.x, 0, toPoint.end.z));
+      Vector vy = new Vector(new Position(0, 0, 0), new Position(0, toPoint.end.x, toPoint.end.z));
+      vertex(200*vx.getAngleBetween(getForwardVector()), 200*vy.getAngleBetween(getForwardVector()));
+    }
+    endShape(CLOSE);
   }
 }

@@ -2,7 +2,6 @@ Position playerP = new Position(0, 0, 0);
 Position wallP = new Position(0, 0, 5);
 int size = 400;
 float theta = 0;
-public Vector forward = getForwardVector();
 
 void setup() {
   size(size, size);
@@ -27,8 +26,12 @@ void draw() {
 }
 
 void iterate() {
-  //rect(0, 0, 100/pow(playerP.distance(wallP), 2.0), 200/pow(playerP.distance(wallP), 2.0));
-  Rect cool = new Rect(new Position(5, 0, 5), 1000, 500);
+  ArrayList<Position> pos = new ArrayList<Position>();
+  pos.add(new Position(1, 1, 1));
+  pos.add(new Position(1, 0, 1));
+  pos.add(new Position(0, 0, 1));
+  pos.add(new Position(0, 1, 1));
+  Rect cool = new Rect(pos);
   cool.render();
   if(keyPressed) {
     switch (key) {

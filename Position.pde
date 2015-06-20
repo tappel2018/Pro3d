@@ -9,10 +9,10 @@ public class Position {
     this.z = z;
   }
   
-  Position(Position other) {
-    this.x = other.x;
-    this.y = other.y;
-    this.z = other.z;
+  Position(Position old) {
+    this.x = old.x;
+    this.y = old.y;
+    this.z = old.z;
   }
   
   public void translate(float x, float y, float z) {
@@ -21,8 +21,8 @@ public class Position {
     this.z = this.z + z;
   }
   
-  public void translate(Vector normal) {
-    Vector norm = normal.getNorm();
+  public void translate(Vector toMoveBy) {
+    Vector norm = toMoveBy.getNorm();
     this.translate(norm.end.x, norm.end.y, norm.end.z);
   }
   
