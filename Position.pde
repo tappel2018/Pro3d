@@ -21,6 +21,11 @@ public class Position {
     this.z = this.z + z;
   }
   
+  public void translate(Vector normal) {
+    Vector norm = normal.getNorm();
+    this.translate(norm.end.x, norm.end.y, norm.end.z);
+  }
+  
   public void deplace(float x, float y, float z) {
     this.x = x;
     this.y = y;

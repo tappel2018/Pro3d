@@ -34,4 +34,8 @@ public class Vector{
     Vector norm = getNorm();
     return new Vector(new Position(0, 0, 0), new Position(norm.end.x*scalar, norm.end.y*scalar, norm.end.z*scalar));
   }
+  
+  public String toString() {
+    return this.start + ", " + this.end;
+  }
 }
