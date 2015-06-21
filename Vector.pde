@@ -8,7 +8,10 @@ public class Vector{
   }
   
   public float getAngleBetween(Vector other) {
-    return acos(this.getDotProduct(other)/(this.getMagnitude()*other.getMagnitude()));
+    if(asin(this.getDotProduct(other)/(this.getMagnitude()*other.getMagnitude())) > 0)
+      return acos(this.getDotProduct(other)/(this.getMagnitude()*other.getMagnitude()));
+    else
+      return -acos(this.getDotProduct(other)/(this.getMagnitude()*other.getMagnitude()));
   }
   
   public float getDotProduct(Vector other) {
