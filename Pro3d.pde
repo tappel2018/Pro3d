@@ -42,10 +42,10 @@ void iterate() {
         playerP.translate(0, 0, -0.02);
         break;
       case 'a':
-        theta += 0.1;
+        theta -= 0.02;
         break;
       case 'd':
-        theta += 0.1;
+        theta += 0.02;
         break;
       
     }
