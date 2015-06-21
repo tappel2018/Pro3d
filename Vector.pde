@@ -8,7 +8,7 @@ public class Vector{
   }
   
   public float getAngleBetween(Vector other) {
-    if(asin(this.getDotProduct(other)/(this.getMagnitude()*other.getMagnitude())) > 0)
+    if(this.getNorm().end.x < other.getNorm().end.x || this.getNorm().end.y < other.getNorm().end.y)
       return acos(this.getDotProduct(other)/(this.getMagnitude()*other.getMagnitude()));
     else
       return -acos(this.getDotProduct(other)/(this.getMagnitude()*other.getMagnitude()));

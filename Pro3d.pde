@@ -28,14 +28,7 @@ void draw() {
 
 void iterate() {
   ArrayList<Position> pos = new ArrayList<Position>();
-  pos.add(new Position(0, 0, 0));
-  pos.add(new Position(1, 0, 1));
   pos.add(new Position(0, 0, 1));
-  pos.add(new Position(0, 1, 1));
-  pos.add(new Position(1, 1, 1));
-  pos.add(new Position(1, 1, -1));
-  pos.add(new Position(-1, 1, -1));
-  pos.add(new Position(-1, 1, 1));
   Rect cool = new Rect(pos);
   cool.render();
   if(keyPressed) {
@@ -60,7 +53,8 @@ void iterate() {
 }
 
 public Vector getForwardVector() {
-  return new Vector(new Position(0, 0, 0), new Position(0 + cos(theta), 0, 0 + sin(theta)));
+  return new Vector(new Position(playerP.x, playerP.y, playerP.z), 
+                    new Position(playerP.x + sin(theta), playerP.y, playerP.z + cos(theta)));
 }
 
 
