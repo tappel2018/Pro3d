@@ -8,10 +8,7 @@ public class Vector{
   }
   
   public float getAngleBetween(Vector other) {
-    if(this.getNorm().end.x < other.getNorm().end.x || this.getNorm().end.y < other.getNorm().end.y)
       return acos(this.getDotProduct(other)/(this.getMagnitude()*other.getMagnitude()));
-    else
-      return -acos(this.getDotProduct(other)/(this.getMagnitude()*other.getMagnitude()));
   }
   
   public float getDotProduct(Vector other) {
@@ -30,7 +27,7 @@ public class Vector{
   }
   
   public Vector getNorm() {
-    return new Vector(new Position(0, 0, 0), new Position(end.x-start.x, end.y-start.y, end.z-start.z));
+    return new Vector(origin, new Position(end.x-start.x, end.y-start.y, end.z-start.z));
   }
   
   public Vector multiplyNorm(float scalar) {
