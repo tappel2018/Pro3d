@@ -2,7 +2,7 @@ Position playerP = new Position(0, 1, 0);
 int size = 400;
 float theta = 0;
 Position origin = new Position(0, 0, 0);
-Vector v = new Vector(origin, new Position(0, 0, 1);
+Vector v = new Vector(origin, new Position(0, 0, 1));
 
 void setup() {
   size(size, size);

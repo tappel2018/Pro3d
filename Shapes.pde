@@ -9,8 +9,8 @@ public class Rect{
     for ( int i = 0; i < pos.size(); i++ ) {
       Position current = pos.get(i);
       Vector toPoint = (new Vector(playerP, current)).getNorm();
-      Vector vx = new Vector(new origin, new Position(toPoint.end.x, 0, toPoint.end.z));
-      Vector vy = new Vector(new origin, new Position(0, toPoint.end.y, toPoint.end.z));
+      Vector vx = new Vector(origin, new Position(toPoint.end.x, 0, toPoint.end.z));
+      Vector vy = new Vector(origin, new Position(0, toPoint.end.y, toPoint.end.z));
       float vvx = toPoint.getAngleBetween(getForwardVector());
       float vvy = vy.getAngleBetween(getForwardVector());
       if(vvx > PI/2 || vvy > PI/2 || vvx < -PI/2 || vvy < -PI/2)
