@@ -23,11 +23,19 @@ public class Rect{
       
       float fx = theta;
       float px = vx.getAngleBetween(vz);
-      float vvx = px-fx;
       
+      float deltatheta = px - fx;
+      
+//      float vyx =  toPoint.end.x*cos(deltatheta) + toPoint.end.z*sin(deltatheta);
+//      float vyz = -toPoint.end.x*sin(deltatheta) + toPoint.end.z*cos(deltatheta);
+//      Vector vy = new Vector(origin, new Position(vyx, toPoint.end.y, vyz));
+      
+      float thetaY = atan(-toPoint.end.y/vx.getMagnitude());
+     
+      print(thetaY);
       stroke(255, 0, 0);
       strokeWeight(5);
-      point(size*vvx, 0);
+      point(size*deltatheta, size*thetaY);
       //print(degrees(vvx) + ", " + degrees(vvy) + "\n" + degrees(theta) + "\n");
       noStroke();
     }

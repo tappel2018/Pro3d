@@ -1,7 +1,7 @@
 Position playerP = new Position(0, 1, 0);
 int size = 400;
 float theta = 0;
-Position origin = new Position(0, 0, 0);
+final Position origin = new Position(0, 0, 0);
 Vector vz = new Vector(origin, new Position(0, 0, 1));
 
 void setup() {
@@ -30,7 +30,7 @@ void draw() {
 
 void iterate() {
   ArrayList<Position> pos = new ArrayList<Position>();
-  pos.add(new Position(1, 1, 1));
+  pos.add(new Position(1, 0.9, 1));
 
   Rect cool = new Rect(pos);
   cool.render();
