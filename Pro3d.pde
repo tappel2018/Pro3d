@@ -1,4 +1,4 @@
-Position playerP = new Position(0, 1, 0);
+Position playerP = new Position(0, .9, 0);
 int size = 400;
 float theta = 0;
 final Position origin = new Position(0, 0, 0);
@@ -30,7 +30,11 @@ void draw() {
 
 void iterate() {
   ArrayList<Position> pos = new ArrayList<Position>();
-  pos.add(new Position(1, 0.9, 1));
+  pos.add(new Position(0.9, 1, 1));
+  pos.add(new Position(0.9, 0.8, 1));
+  pos.add(new Position(1.1, 0.8, 1));
+  pos.add(new Position(1.1, 1, 1));
+ 
 
   Rect cool = new Rect(pos);
   cool.render();
@@ -43,10 +47,10 @@ void iterate() {
         playerP.translate(getForwardVector().multiplyNorm(-0.01));
         break;
       case 'a':
-        theta -= 0.05;
+        theta -= 0.02;
         break;
       case 'd':
-        theta += 0.05;
+        theta += 0.02;
         break;
       
     }

@@ -5,7 +5,7 @@ public class Rect{
   }
   
   public void render() {
-//    beginShape();
+    beginShape();
     for ( int i = 0; i < pos.size(); i++ ) {
       Position current = pos.get(i);
         Vector toPoint = (new Vector(playerP, current)).getNorm();
@@ -22,7 +22,10 @@ public class Rect{
 //    |-sin θ    0   cos θ| |z|   |-x sin θ + z cos θ|   |z'|
       
       float fx = theta;
-      float px = vx.getAngleBetween(vz);
+      float px = atan(toPoint.end.x/toPoint.end.z);
+      
+      if( ( (toPoint.end.x < 0 && toPoint.end.z > 0) || (toPoint.end.x < 0 && toPoint.end.z < 0) )&& ( theta > PI/2 || theta < 3*PI/2 ) )
+        return;
       
       float deltatheta = px - fx;
       
@@ -31,15 +34,20 @@ public class Rect{
 //      Vector vy = new Vector(origin, new Position(vyx, toPoint.end.y, vyz));
       
       float thetaY = atan(-toPoint.end.y/vx.getMagnitude());
+      
+      
+      
+      if(thetaY> PI/2 || deltatheta > PI/2)
+        break;
      
       print(thetaY);
-      stroke(255, 0, 0);
-      strokeWeight(5);
-      point(size*deltatheta, size*thetaY);
+//      stroke(255, 0, 0);
+//      strokeWeight(5);
+      vertex(2*size*deltatheta, 2*size*thetaY);
       //print(degrees(vvx) + ", " + degrees(vvy) + "\n" + degrees(theta) + "\n");
-      noStroke();
+//      noStroke();
     }
-//    endShape(CLOSE);
+    endShape(CLOSE);
     
   }
 }
