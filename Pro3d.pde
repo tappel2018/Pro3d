@@ -56,7 +56,11 @@ void iterate() {
     }
   }
   
-  theta %= PI*2;
+  theta %= 2*PI;
+  if (theta < 0)
+    theta += 2*PI;
+  //fix
+  print(theta + "\n");
   
   //print(playerP);
 }

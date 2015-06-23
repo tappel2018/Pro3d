@@ -24,10 +24,16 @@ public class Rect{
       float fx = theta;
       float px = atan(toPoint.end.x/toPoint.end.z);
       
-      if( ( (toPoint.end.x < 0 && toPoint.end.z > 0) || (toPoint.end.x < 0 && toPoint.end.z < 0) )&& ( theta > PI/2 || theta < 3*PI/2 ) )
+      if( toPoint.getAngleBetween(getForwardVector()) > PI/2)
         return;
-      
+        
       float deltatheta = px - fx;
+      
+      if( toPoint.end.z < 0 )
+      {
+        deltatheta = PI + px - fx;
+        deltatheta %= 2*PI;
+      }
       
 //      float vyx =  toPoint.end.x*cos(deltatheta) + toPoint.end.z*sin(deltatheta);
 //      float vyz = -toPoint.end.x*sin(deltatheta) + toPoint.end.z*cos(deltatheta);
@@ -38,9 +44,8 @@ public class Rect{
       
       
       if(thetaY> PI/2 || deltatheta > PI/2)
-        break;
+        return;
      
-      print(thetaY);
 //      stroke(255, 0, 0);
 //      strokeWeight(5);
       vertex(2*size*deltatheta, 2*size*thetaY);
